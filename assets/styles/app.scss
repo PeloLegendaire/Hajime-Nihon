@@ -1,0 +1,124 @@
+//@import "~bootstrap/scss/bootstrap";
+@import "variables";
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    color: inherit;
+    background-color: $colorLightRed;
+    border: none;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: pointer;
+}
+
+.actions {
+    color: $colorWhite;
+    font-size: 1.5rem;
+    padding: .8rem 2rem;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px;
+    color: $colorBlack;
+    background-color: $colorWhite;
+}
+
+h1 {
+    color: $colorBlack;
+}
+
+.container-home {
+    display: flex;
+    align-items: center;
+    padding: 1rem 2rem;
+    flex-direction: column;
+
+    .block-main-home {
+        padding: 13rem 15rem;
+        display: flex;
+        flex-direction: column;
+        gap: 8rem;
+
+        .description-home {
+            font-size: 3rem;
+        }
+
+        .button-home {
+            color: $colorWhite;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 25rem;
+
+            button {
+                padding: 1rem 4rem;
+                .arrow {
+                    transition: 1s;
+                    width: 25px;
+                }
+            }
+
+            button:hover {
+                .arrow {
+                    transform: translateX(10px);
+                }
+            }
+        }
+    }
+}
+
+.container-home-background {
+    position: absolute;
+    top: 5rem;
+    width: 100%;
+    p {
+        position: absolute;
+    }
+}
+
+.navbar-app {
+    font-size: 1.3rem;
+    padding: 5px;
+    background-color: $colorGrey;
+    color: $colorWhite;
+    height: 5rem;
+    box-shadow: 0 5px 4px 0 rgba(0, 0, 0, 0.2);
+    display: flex;
+
+    .button-connection {
+        width: 10rem;
+        height: 2rem;
+        border-radius: 5px;
+    }
+
+    .block-logo-menu {
+        padding: 1rem 2rem;
+        align-items: center;
+        justify-content: space-between;
+        display: flex;
+        gap: 2rem;
+        width: 100%;
+    }
+
+    .nav-logo {
+        height: 100%;
+        width: 5rem;
+    }
+
+    ul {
+        list-style: none;
+        display: flex;
+        gap: 4rem;
+    }
+}

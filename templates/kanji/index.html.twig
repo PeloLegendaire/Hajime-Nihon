@@ -1,0 +1,13 @@
+{% extends 'kanji/base.html.twig' %}
+
+{% block title %}Kanji{% endblock %}
+
+{% block body %}
+    <div class="container-kanji">
+        <div class="container-actions-kanji">
+            <a href="{{ path('kanji_ajouter') }}">
+                <button class="actions">Ajouter un kanji</button>
+            </a>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('signe') }}
+{% endblock %}
+{% block title %}{{ type|capitalize }}{% endblock %}
+
+{% block body %}
+    <div class="container-signe">
+        <h1>Tableau des {{ type|capitalize }}</h1>
+        <table>
+            <tbody>
+                <tr>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

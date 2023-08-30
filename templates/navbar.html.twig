@@ -1,0 +1,31 @@
+<nav class="navbar-app">
+    <a class="navbar-brand" href="{{ path('app_index') }}">
+        <img class="nav-logo" src="{{ asset('images/logo_v2.svg') }}" alt="Logo">
+    </a>
+    <div class="block-logo-menu">
+        <ul>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('app_index') }}">Accueil</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('app_signe', {'signe': 'hiragana'}) }}">Hiragana</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('app_signe', {'signe': 'katakana'}) }}">Katakana</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('kanji_index') }}">Kanji</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Lexique</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Quiz</a>
+            </li>
+        </ul>
+        <a href="#">
+            <button class="button-connection">Se connecter</button>
+        </a>
+    </div>
+
+</nav>

@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+    <div class="container-home">
+        <div class="block-main-home">
+            <p class="description-home">
+                Bienvenue sur <span style="color: #EF233C;">Hajime Nihon</span> le site pour apprendre les syllabaires et kanji japonais.
+            </p>
+            <div class="button-home">
+                <a href="#">
+                    <button>Je débute <img class="arrow" src="{{ asset('images/fleche-droite.svg') }}" alt=">"></button>
+                </a>
+                <a href="#">
+                    <button>Je contribue <img class="arrow" src="{{ asset('images/fleche-droite.svg') }}" alt=">"></button>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="container-home-background">
+        <p style="color:#2B2D42;font-size:7rem;transform:rotateZ(-25deg);left:50px;top:50px;">漢</p>
+        <p style="color:#EF233C;font-size:6rem;transform:rotateZ(25deg);right:50px;top:50px;">字</p>
+        <p style="color:#EF233C;font-size:6rem;left:100px;top:500px;">ひ</p>
+        <p style="color:#2B2D42;font-size:7rem;left:600px;top:600px;">ら</p>
+        <p style="color:#EF233C;font-size:6rem;right:600px;top:600px;">が</p>
+        <p style="color:#2B2D42;font-size:7rem;right:100px;top:500px;">な</p>
+    </div>
+{% endblock %}

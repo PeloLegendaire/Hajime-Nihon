@@ -1,0 +1,15 @@
+@import "variables";
+
+.container-kanji {
+    padding: 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-actions-kanji {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
