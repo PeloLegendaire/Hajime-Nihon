@@ -2,10 +2,17 @@
 
 namespace App\Entity;
 
+use App\Repository\HiraganaRepository;
 use App\Repository\SigneRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\DiscriminatorColumn;
+use Doctrine\ORM\Mapping\DiscriminatorMap;
+use Doctrine\ORM\Mapping\InheritanceType;
 
 #[ORM\Entity(repositoryClass: SigneRepository::class)]
+#[InheritanceType('JOINED')]
+#[DiscriminatorColumn(name: 'discr', type: 'string')]
+#[DiscriminatorMap(['signe' => Signe::class, 'kanji' => Kanji::class, 'hiragana' => Hiragana::class, 'katakana' => Katakana::class])]
 abstract class Signe
 {
     #[ORM\Id]
@@ -16,7 +23,7 @@ abstract class Signe
     #[ORM\Column(length: 2)]
     protected ?string $signe = null;
 
-    #[ORM\Column(length: 5)]
+    #[ORM\Column(length: 10)]
     protected ?string $romaji = null;
 
     public function getId(): ?int

@@ -1,0 +1,74 @@
+{% extends 'lexique/base.html.twig' %}
+
+{% block title %}Lexique{% endblock %}
+
+{% block body %}
+    <div class="container-lexique">
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert alert-{{ label }}" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+        <div class="container-table-lexique">
+            <ul>
+                <li id="tab-mot" style="border-right: none;border-top-left-radius: 10px;">Mots</li>
+                <li id="tab-expression" style="border-top-right-radius: 10px;">Expressions</li>
+            </ul>
+            <table id="table-mots" class="table mt-4">
+                <thead>
+                <tr>
+                    <th scope="col">Kanji</th>
+                    <th scope="col">Rōmaji</th>
+                    <th scope="col">Traduction</th>
+                    <th scope="col">Actions</th>
+                    <th scope="col">
+                        <a href="{{ path('lexique_ajouter') }}">➕</a>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for mot in mots %}
+                        <tr>
+                            <td>{{ mot.kanji }}</td>
+                            <td>{{ mot.romaji }}</td>
+                            <td>{{ mot.traduction }}</td>
+                            <td>
+                                <a href="{{ path('lexique_modifier', {'id': mot.id}) }}">✏️</a>
+                                <a href="{{ path('lexique_supprimer', {'id': mot.id}) }}" onclick="confirm('Êtes-vous sûr(e) ?');">🗑️</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <table id="table-expressions" class="table mt-4" style="display: none">
+                <thead>
+                <tr>
+                    <th scope="col">Kanji</th>
+                    <th scope="col">Rōmaji</th>
+                    <th scope="col">Traduction</th>
+                    <th scope="col">Actions</th>
+                    <th scope="col">
+                        <a href="{{ path('lexique_ajouter') }}">➕</a>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                        {% for expression in expressions %}
+                            <tr>
+                                <td>{{ expression.kanji }}</td>
+                                <td>{{ expression.romaji }}</td>
+                                <td>{{ expression.traduction }}</td>
+                                <td>
+                                    <a href="{{ path('lexique_modifier', {'id': expression.id}) }}">✏️</a>
+                                    <a href="{{ path('lexique_supprimer', {'id': expression.id}) }}" onclick="confirm('Êtes-vous sûr(e) ?');">🗑️</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+{% endblock %}

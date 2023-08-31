@@ -23,6 +23,8 @@ Encore
     .addEntry('app', './assets/app.js')
     .addEntry('kanji', './assets/kanji.js')
     .addEntry('signe', './assets/signe.js')
+    .addEntry('lexique', './assets/lexique.js')
+
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()

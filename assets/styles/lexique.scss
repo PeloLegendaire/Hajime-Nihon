@@ -1,6 +1,6 @@
 @import "variables";
 
-.container-kanji {
+.container-lexique {
     padding: 1rem 2rem;
     display: flex;
     flex-direction: column;
@@ -9,13 +9,13 @@
     gap: 2rem;
 }
 
-.form-kanji {
+.form-lexique {
     display: flex;
     flex-direction: column;
     gap: 1rem;
     align-items: center;
 
-    .block-input-kanji {
+    .block-input-lexique {
         display: flex;
         flex-direction: column;
         gap: 1rem;
@@ -26,17 +26,32 @@
             align-items: center;
         }
 
-        #kanji_signe {
-            width: 2rem;
-        }
-        #kanji_romaji {
-            width: 5rem;
-        }
     }
 
-    #kanji_valider {
+    #lexique_valider {
         color: $colorWhite;
         padding: .5rem 2rem;
+    }
+}
+
+.container-table-lexique {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    ul {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        li {
+            list-style: none;
+            background-color: $colorGrey;
+            padding: 5px 5rem;
+            border: 1px solid $colorBlack;
+            user-select: none;
+            cursor: pointer;
+        }
     }
 }
 
@@ -45,6 +60,7 @@ table {
     text-align: center;
     tr {
         td, th {
+            white-space: nowrap;
             padding: 5px 1rem;
         }
     }

@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20230830122045 extends AbstractMigration
+final class Version20230831140408 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -20,14 +20,12 @@ final class Version20230830122045 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE hiragana ADD type VARCHAR(255) NOT NULL');
-        $this->addSql('ALTER TABLE katakana ADD type VARCHAR(255) NOT NULL');
+        $this->addSql('CREATE TABLE lexique (id INT AUTO_INCREMENT NOT NULL, kanji VARCHAR(255) NOT NULL, romaji VARCHAR(255) NOT NULL, traduction VARCHAR(255) NOT NULL, type VARCHAR(10) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
     }
 
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE hiragana DROP type');
-        $this->addSql('ALTER TABLE katakana DROP type');
+        $this->addSql('DROP TABLE lexique');
     }
 }

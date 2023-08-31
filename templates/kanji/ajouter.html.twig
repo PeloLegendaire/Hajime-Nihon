@@ -5,5 +5,14 @@
 {% block body %}
     <div class="container-kanji">
         <h1>Ajouter un kanji</h1>
+        {{ form_start(form, {'attr': {'class': 'form-kanji'}}) }}
+            <div class="block-input-kanji">
+                {{ form_row(form.signe) }}
+                {{ form_row(form.romaji) }}
+                {{ form_row(form.description) }}
+                {{ form_row(form.traduction) }}
+            </div>
+            {{ form_row(form.valider) }}
+        {{ form_end(form) }}
     </div>
 {% endblock %}

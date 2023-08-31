@@ -4,10 +4,40 @@
 
 {% block body %}
     <div class="container-kanji">
-        <div class="container-actions-kanji">
-            <a href="{{ path('kanji_ajouter') }}">
-                <button class="actions">Ajouter un kanji</button>
-            </a>
-        </div>
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert alert-{{ label }}" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+        <table class="table mt-4">
+            <thead>
+            <tr>
+                <th scope="col">Signe</th>
+                <th scope="col">Rōmaji</th>
+                <th scope="col">Description</th>
+                <th scope="col">Traduction</th>
+                <th scope="col">Actions</th>
+                <th scope="col">
+                    <a href="{{ path('kanji_ajouter') }}">➕</a>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for kanji in kanjis %}
+                <tr>
+                    <td>{{ kanji.signe }}</td>
+                    <td>{{ kanji.romaji }}</td>
+                    <td>{{ kanji.description }}</td>
+                    <td>{{ kanji.traduction }}</td>
+                    <td>
+                        <a href="{{ path('kanji_modifier', {'id': kanji.id}) }}">✏️</a>
+                        <a href="{{ path('kanji_supprimer', {'id': kanji.id}) }}" onclick="confirm('Êtes-vous sûr(e) ?');">🗑️</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
     </div>
 {% endblock %}

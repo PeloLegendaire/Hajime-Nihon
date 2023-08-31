@@ -2,23 +2,54 @@
 
 namespace App\Controller;
 
+use App\Entity\Kanji;
+use App\Form\KanjiType;
+use App\Repository\KanjiRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+#[Route('/kanji', name: 'kanji')]
 class KanjiController extends AbstractController
 {
-    #[Route('/kanji', name: 'kanji_index')]
-    public function index(): Response
+    #[Route('/', name: '_index')]
+    public function index(KanjiRepository $kanjiRepository): Response
     {
-        return $this->render('kanji/index.html.twig', []);
+        return $this->render('kanji/index.html.twig', [
+            'kanjis' => $kanjiRepository->findAll()
+        ]);
     }
 
-    #[Route('/kanji/ajouter', name: 'kanji_ajouter')]
-    public function ajouter(): Response
+    #[Route('/ajouter', name: '_ajouter')]
+    #[Route('/modifier/{id}', name: '_modifier', requirements: ['id' => '\d+'])]
+    public function editer(
+        Request $request,
+        EntityManagerInterface $entityManager,
+        Kanji $kanji = new Kanji()
+    ): Response
     {
+        $form = $this->createForm(KanjiType::class, $kanji);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->persist($kanji);
+            $entityManager->flush();
+            $this->addFlash('success', 'Kanji enregistré avec succès !');
+            return $this->redirectToRoute('kanji_index');
+        }
         return $this->render('kanji/ajouter.html.twig', [
-            'controller_name' => 'KanjiController',
+            'form' => $form,
         ]);
+    }
+
+    #[Route('/supprimer/{id}', name: '_supprimer', requirements: ['id' => '\d+'])]
+    public function supprimer(Kanji $kanji, EntityManagerInterface $entityManager): Response
+    {
+        $entityManager->remove($kanji);
+        $entityManager->flush();
+        $this->addFlash('success', 'Kanji supprimé avec succès !');
+        return $this->redirectToRoute('kanji_index');
     }
 }

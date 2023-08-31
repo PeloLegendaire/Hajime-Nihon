@@ -1,0 +1,18 @@
+{% extends 'lexique/base.html.twig' %}
+
+{% block title %}Lexique{% endblock %}
+
+{% block body %}
+    <div class="container-lexique">
+        <h1>Ajouter un mot/expression</h1>
+        {{ form_start(form, {'attr': {'class': 'form-lexique'}}) }}
+            <div class="block-input-lexique">
+                {{ form_row(form.kanji) }}
+                {{ form_row(form.romaji) }}
+                {{ form_row(form.traduction) }}
+                {{ form_row(form.type) }}
+            </div>
+            {{ form_row(form.valider) }}
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

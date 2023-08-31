@@ -122,3 +122,13 @@ h1 {
         gap: 4rem;
     }
 }
+
+input, textarea, select {
+    font-size: inherit;
+    font-family: inherit;
+}
+
+input[type='text'], select {
+    width: 10rem;
+    height: 2rem;
+}
