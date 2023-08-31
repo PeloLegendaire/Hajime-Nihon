@@ -4,6 +4,7 @@
 
 {% block body %}
     <div class="container-kanji">
+        <h1>Kanji</h1>
         {% for label, messages in app.flashes %}
             {% for message in messages %}
                 <div class="alert alert-{{ label }}" role="alert">

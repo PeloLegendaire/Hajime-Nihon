@@ -132,3 +132,16 @@ input[type='text'], select {
     width: 10rem;
     height: 2rem;
 }
+
+.alert-success {
+    color: #0f6848;
+    background-color: #d2f4e8;
+    border-color: #bff0de;
+}
+
+.alert {
+    position: relative;
+    padding: .75rem 1.25rem;
+    border: 1px solid transparent;
+    border-radius: .35rem;
+}

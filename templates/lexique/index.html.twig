@@ -4,6 +4,7 @@
 
 {% block body %}
     <div class="container-lexique">
+        <h1>Lexique</h1>
         {% for label, messages in app.flashes %}
             {% for message in messages %}
                 <div class="alert alert-{{ label }}" role="alert">
@@ -13,7 +14,7 @@
         {% endfor %}
         <div class="container-table-lexique">
             <ul>
-                <li id="tab-mot" style="border-right: none;border-top-left-radius: 10px;">Mots</li>
+                <li id="tab-mot" style="border-right: 1px solid #EDF2F4;border-top-left-radius: 10px;">Mots</li>
                 <li id="tab-expression" style="border-top-right-radius: 10px;">Expressions</li>
             </ul>
             <table id="table-mots" class="table mt-4">
