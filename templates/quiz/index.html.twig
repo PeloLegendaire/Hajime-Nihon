@@ -1,0 +1,43 @@
+{% extends 'quiz/base.html.twig' %}
+
+{% block title %}Quiz{% endblock %}
+
+{% block body %}
+    <div class="container-quiz">
+        <h1>Quiz</h1>
+        {% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert alert-{{ label }}" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+        <table class="table mt-4">
+            <thead>
+                <tr>
+                    <th scope="col">Libelle</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Nombre de questions</th>
+                    <th scope="col">Actions</th>
+                    <th scope="col">
+                        <a href="{{ path('quiz_ajouter') }}"><i class="fa-solid fa-plus"></i></a>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for quiz in quizzes %}
+                    <tr>
+                        <td>{{ quiz.libelle }}</td>
+                        <td>{{ quiz.type|capitalize }}</td>
+                        <td>{{ quiz.nombreQuestion }}</td>
+                        <td>
+                            <a href="{{ path('quiz_modifier', {'id': quiz.id}) }}"><i class="fa-solid fa-pen"></i>️</a>
+                            <a href="{{ path('quiz_supprimer', {'id': quiz.id}) }}" onclick="confirm('Êtes-vous sûr(e) ?');"><i class="fa-solid fa-trash"></i>️</a>
+                            <a href="{{ path('quiz_commencer', {'id': quiz.id}) }}"><i class="fa-solid fa-play"></i></a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

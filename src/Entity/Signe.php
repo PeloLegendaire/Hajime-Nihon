@@ -15,6 +15,11 @@ use Doctrine\ORM\Mapping\InheritanceType;
 #[DiscriminatorMap(['signe' => Signe::class, 'kanji' => Kanji::class, 'hiragana' => Hiragana::class, 'katakana' => Katakana::class])]
 abstract class Signe
 {
+
+    const TYPE_MONOGRAMME = 'monogramme';
+    const TYPE_DIGRAMME = 'digramme';
+    const TYPE_DIACRITIQUE = 'diacritique';
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]

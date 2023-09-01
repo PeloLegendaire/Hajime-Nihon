@@ -25,7 +25,7 @@
                     <th scope="col">Traduction</th>
                     <th scope="col">Actions</th>
                     <th scope="col">
-                        <a href="{{ path('lexique_ajouter') }}">➕</a>
+                        <a href="{{ path('lexique_ajouter') }}"><i class="fa-solid fa-plus"></i></a>
                     </th>
                 </tr>
                 </thead>
@@ -36,8 +36,8 @@
                             <td>{{ mot.romaji }}</td>
                             <td>{{ mot.traduction }}</td>
                             <td>
-                                <a href="{{ path('lexique_modifier', {'id': mot.id}) }}">✏️</a>
-                                <a href="{{ path('lexique_supprimer', {'id': mot.id}) }}" onclick="confirm('Êtes-vous sûr(e) ?');">🗑️</a>
+                                <a href="{{ path('lexique_modifier', {'id': mot.id}) }}"><i class="fa-solid fa-pen"></i>️</a>
+                                <a href="{{ path('lexique_supprimer', {'id': mot.id}) }}" onclick="confirm('Êtes-vous sûr(e) ?');"><i class="fa-solid fa-trash"></i>️</a>
                             </td>
                         </tr>
                     {% endfor %}
@@ -51,7 +51,7 @@
                     <th scope="col">Traduction</th>
                     <th scope="col">Actions</th>
                     <th scope="col">
-                        <a href="{{ path('lexique_ajouter') }}">➕</a>
+                        <a href="{{ path('lexique_ajouter') }}"><i class="fa-solid fa-plus"></i></a>
                     </th>
                 </tr>
                 </thead>
@@ -62,8 +62,8 @@
                                 <td>{{ expression.romaji }}</td>
                                 <td>{{ expression.traduction }}</td>
                                 <td>
-                                    <a href="{{ path('lexique_modifier', {'id': expression.id}) }}">✏️</a>
-                                    <a href="{{ path('lexique_supprimer', {'id': expression.id}) }}" onclick="confirm('Êtes-vous sûr(e) ?');">🗑️</a>
+                                    <a href="{{ path('lexique_modifier', {'id': expression.id}) }}"><i class="fa-solid fa-pen"></i>️</a>
+                                    <a href="{{ path('lexique_supprimer', {'id': expression.id}) }}" onclick="confirm('Êtes-vous sûr(e) ?');"><i class="fa-solid fa-trash"></i>️</a>
                                 </td>
                             </tr>
                         {% endfor %}

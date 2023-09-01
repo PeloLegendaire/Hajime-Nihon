@@ -9,12 +9,55 @@
 {% block body %}
     <div class="container-signe">
         <h1>Tableau des {{ type|capitalize }}</h1>
-        <table>
-            <tbody>
-                <tr>
-                    <td></td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="container-tables-signe">
+            {% for type,signes in tabSignes %}
+                {% if type starts with 'monogramme' %}
+                    {% set bgColor = '#EFFAFA' %}
+                {% elseif type starts with 'digramme' %}
+                    {% set bgColor = '#F3F5DE' %}
+                {% endif %}
+                <h2>{{ type|capitalize }}</h2>
+                <table>
+                    <tbody>
+                        {% for key,signe in signes %}
+                            {% if type starts with 'digramme' %}
+                                {% set i = 0 %}
+                                {% if (key + 1) % 3 == 1 or key == 0 %}
+                                    {% set i = key %}
+                                    <tr>
+                                {% endif %}
+                                {% if (key + 1) % 3 == 0 %}
+                                    <td style="border: none">&nbsp;</td>
+                                {% endif %}
+                                <td style="background-color: {{ bgColor }}">
+                                    <p>{{ signe.signe }}</p>
+                                    <p style="font-size: 2rem">{{ signe.romaji }}</p>
+                                </td>
+                                {% if (key + 1) % 3 == 1 %}
+                                    <td style="border: none">&nbsp;</td>
+                                {% endif %}
+                                {% if (key + 1) % 3 == 1 and key != i %}
+                                    </tr>
+                                {% endif %}
+                            {% else %}
+                                {% set i = 0 %}
+                                {% if (key + 1) % 5 == 1 or key == 0 %}
+                                    {% set i = key %}
+                                    <tr>
+                                {% endif %}
+                                <td style="background-color: {{ bgColor }}">
+                                    <p>{{ signe.signe }}</p>
+                                    <p style="font-size: 2rem">{{ signe.romaji }}</p>
+                                </td>
+                                {% if (key + 1) % 5 == 1 and key != i %}
+                                    </tr>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% endfor %}
+        </div>
+
     </div>
 {% endblock %}

@@ -21,6 +21,17 @@ class SigneRepository extends ServiceEntityRepository
         parent::__construct($registry, Signe::class);
     }
 
+    public function findByTypeOrdered(ServiceEntityRepository $repository) :array
+    {
+        $signes = [];
+        $signes[Signe::TYPE_MONOGRAMME] = $repository->findBy(['type' => Signe::TYPE_MONOGRAMME]);
+        $signes[Signe::TYPE_DIGRAMME] = $repository->findBy(['type' => Signe::TYPE_DIGRAMME]);
+        $signes[Signe::TYPE_MONOGRAMME . '/' . Signe::TYPE_DIACRITIQUE] = $repository->findBy(['type' => Signe::TYPE_MONOGRAMME . '/' . Signe::TYPE_DIACRITIQUE]);
+        $signes[Signe::TYPE_DIGRAMME . '/' . Signe::TYPE_DIACRITIQUE] = $repository->findBy(['type' => Signe::TYPE_DIGRAMME . '/' . Signe::TYPE_DIACRITIQUE]);
+        return $signes;
+    }
+
+
 //    /**
 //     * @return Signe[] Returns an array of Signe objects
 //     */

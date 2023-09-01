@@ -1,0 +1,12 @@
+{% extends 'quiz/base.html.twig' %}
+
+{% block title %}Quiz{% endblock %}
+
+{% block body %}
+    <div class="container-quiz">
+        <div class="header-quiz">
+            <h1>Quiz : {{ quiz.libelle }}</h1>
+            <p>Question <span id="number-question">1</span>/{{ quiz.nombreQuestion }}</p>
+        </div>
+    </div>
+{% endblock %}

@@ -7,7 +7,29 @@
     padding: 1rem 2rem;
     flex-direction: column;
 
-    table {
-
+    .container-tables-signe {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem 2rem;
+        flex-direction: column;
+        width: 100%;
+        gap: 2rem;
+        table {
+            font-size: 3rem;
+            width: 50%;
+            text-align: center;
+            border-collapse: collapse;
+            tr {
+                td {
+                    width: 10rem;
+                    border: 1px solid $colorBlack;
+                    padding: 5px 1rem;
+                }
+            }
+        }
     }
+
+
 }
+

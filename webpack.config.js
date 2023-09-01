@@ -24,6 +24,7 @@ Encore
     .addEntry('kanji', './assets/kanji.js')
     .addEntry('signe', './assets/signe.js')
     .addEntry('lexique', './assets/lexique.js')
+    .addEntry('quiz', './assets/quiz.js')
 
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.

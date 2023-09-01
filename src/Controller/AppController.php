@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Signe;
 use App\Repository\HiraganaRepository;
 use App\Repository\KatakanaRepository;
+use App\Repository\SigneRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -19,20 +21,21 @@ class AppController extends AbstractController
     #[Route('/syllabaire/{signe}', name: 'app_signe')]
     public function signe(
         string $signe,
+        SigneRepository $signeRepository,
         HiraganaRepository $hiraganaRepository,
         KatakanaRepository $katakanaRepository
     ): Response
     {
         if ($signe === 'hiragana') {
-            $signes = $hiraganaRepository->findAll();
+            $signes = $signeRepository->findByTypeOrdered($hiraganaRepository);
         } elseif ($signe === 'katakana') {
-            $signes = $katakanaRepository->findAll();
+            $signes = $signeRepository->findByTypeOrdered($katakanaRepository);
         } else {
             return $this->redirectToRoute('app_index');
         }
         return $this->render('app/signe.html.twig', [
             'type' => $signe,
-            'signes' => $signes
+            'tabSignes' => $signes
         ]);
     }
 }
