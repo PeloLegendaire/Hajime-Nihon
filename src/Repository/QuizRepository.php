@@ -21,6 +21,13 @@ class QuizRepository extends ServiceEntityRepository
         parent::__construct($registry, Quiz::class);
     }
 
+    public function getAllIds(string $tableName) {
+        $connection = $this->getEntityManager()->getConnection();
+        $sql = 'SELECT id FROM ' . $tableName . ' t';
+        $result = $connection->executeQuery($sql);
+        return $result->fetchAllAssociative();
+    }
+
 //    /**
 //     * @return Quiz[] Returns an array of Quiz objects
 //     */
