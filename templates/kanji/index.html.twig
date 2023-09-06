@@ -19,10 +19,12 @@
                 <th scope="col">Rōmaji</th>
                 <th scope="col">Description</th>
                 <th scope="col">Traduction</th>
-                <th scope="col">Actions</th>
-                <th scope="col">
-                    <a href="{{ path('kanji_ajouter') }}"><i class="fa-solid fa-plus"></i></a>
-                </th>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <th scope="col">Actions</th>
+                    <th scope="col">
+                        <a href="{{ path('kanji_ajouter') }}"><i class="fa-solid fa-plus"></i></a>
+                    </th>
+                {% endif %}
             </tr>
             </thead>
             <tbody>
@@ -32,10 +34,12 @@
                     <td>{{ kanji.romaji }}</td>
                     <td>{{ kanji.description }}</td>
                     <td>{{ kanji.traduction }}</td>
-                    <td>
-                        <a href="{{ path('kanji_modifier', {'id': kanji.id}) }}"><i class="fa-solid fa-pen"></i>️</a>
-                        <a href="{{ path('kanji_supprimer', {'id': kanji.id}) }}" onclick="confirm('Êtes-vous sûr(e) ?');"><i class="fa-solid fa-trash"></i>️</a>
-                    </td>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <td>
+                            <a href="{{ path('kanji_modifier', {'id': kanji.id}) }}"><i class="fa-solid fa-pen"></i>️</a>
+                            <a href="{{ path('kanji_supprimer', {'id': kanji.id}) }}" onclick="confirm('Êtes-vous sûr(e) ?');"><i class="fa-solid fa-trash"></i>️</a>
+                        </td>
+                    {% endif %}
                 </tr>
             {% endfor %}
             </tbody>

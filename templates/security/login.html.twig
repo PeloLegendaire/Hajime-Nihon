@@ -1,0 +1,25 @@
+{% extends 'security/base.html.twig' %}
+
+{% block title %}Connexion{% endblock %}
+
+{% block form %}
+    <form class="form-connexion" method="post">
+        <h1>Connexion</h1>
+
+        {% if error %}
+            <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+
+        <input placeholder="Identifiant" type="text" value="{{ last_username }}" name="username" autocomplete="username" required autofocus>
+        <div>
+            <input placeholder="Mot de passe" type="password" name="password" autocomplete="current-password" required>
+            <p style="margin-top: 5px;">Pas de compte ? <a href="{{ path('app_inscription') }}">S'inscrire</a></p>
+        </div>
+
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+        <button type="submit">
+            Se connecter
+        </button>
+    </form>
+{% endblock %}

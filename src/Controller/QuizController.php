@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[Route('/quiz', name: 'quiz')]
 class QuizController extends AbstractController
@@ -25,6 +26,7 @@ class QuizController extends AbstractController
 
     #[Route('/ajouter', name: '_ajouter')]
     #[Route('/modifier/{id}', name: '_modifier', requirements: ['id' => '\d+'])]
+    #[IsGranted('ROLE_ADMIN')]
     public function editer(
         Request $request,
         EntityManagerInterface $entityManager,
@@ -46,6 +48,7 @@ class QuizController extends AbstractController
     }
 
     #[Route('/supprimer/{id}', name: '_supprimer', requirements: ['id' => '\d+'])]
+    #[IsGranted('ROLE_ADMIN')]
     public function supprimer(Quiz $quiz, EntityManagerInterface $entityManager): Response
     {
         $entityManager->remove($quiz);

@@ -23,10 +23,12 @@
                     <th scope="col">Kanji</th>
                     <th scope="col">Rōmaji</th>
                     <th scope="col">Traduction</th>
-                    <th scope="col">Actions</th>
-                    <th scope="col">
-                        <a href="{{ path('lexique_ajouter') }}"><i class="fa-solid fa-plus"></i></a>
-                    </th>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <th scope="col">Actions</th>
+                        <th scope="col">
+                            <a href="{{ path('lexique_ajouter') }}"><i class="fa-solid fa-plus"></i></a>
+                        </th>
+                    {% endif %}
                 </tr>
                 </thead>
                 <tbody>
@@ -35,10 +37,12 @@
                             <td>{{ mot.kanji }}</td>
                             <td>{{ mot.romaji }}</td>
                             <td>{{ mot.traduction }}</td>
-                            <td>
-                                <a href="{{ path('lexique_modifier', {'id': mot.id}) }}"><i class="fa-solid fa-pen"></i>️</a>
-                                <a href="{{ path('lexique_supprimer', {'id': mot.id}) }}" onclick="confirm('Êtes-vous sûr(e) ?');"><i class="fa-solid fa-trash"></i>️</a>
-                            </td>
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <td>
+                                    <a href="{{ path('lexique_modifier', {'id': mot.id}) }}"><i class="fa-solid fa-pen"></i>️</a>
+                                    <a href="{{ path('lexique_supprimer', {'id': mot.id}) }}" onclick="confirm('Êtes-vous sûr(e) ?');"><i class="fa-solid fa-trash"></i>️</a>
+                                </td>
+                            {% endif %}
                         </tr>
                     {% endfor %}
                 </tbody>
@@ -49,10 +53,12 @@
                     <th scope="col">Kanji</th>
                     <th scope="col">Rōmaji</th>
                     <th scope="col">Traduction</th>
-                    <th scope="col">Actions</th>
-                    <th scope="col">
-                        <a href="{{ path('lexique_ajouter') }}"><i class="fa-solid fa-plus"></i></a>
-                    </th>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <th scope="col">Actions</th>
+                        <th scope="col">
+                            <a href="{{ path('lexique_ajouter') }}"><i class="fa-solid fa-plus"></i></a>
+                        </th>
+                    {% endif %}
                 </tr>
                 </thead>
                 <tbody>
@@ -61,10 +67,12 @@
                                 <td>{{ expression.kanji }}</td>
                                 <td>{{ expression.romaji }}</td>
                                 <td>{{ expression.traduction }}</td>
-                                <td>
-                                    <a href="{{ path('lexique_modifier', {'id': expression.id}) }}"><i class="fa-solid fa-pen"></i>️</a>
-                                    <a href="{{ path('lexique_supprimer', {'id': expression.id}) }}" onclick="confirm('Êtes-vous sûr(e) ?');"><i class="fa-solid fa-trash"></i>️</a>
-                                </td>
+                                {% if is_granted('ROLE_ADMIN') %}
+                                    <td>
+                                        <a href="{{ path('lexique_modifier', {'id': expression.id}) }}"><i class="fa-solid fa-pen"></i>️</a>
+                                        <a href="{{ path('lexique_supprimer', {'id': expression.id}) }}" onclick="confirm('Êtes-vous sûr(e) ?');"><i class="fa-solid fa-trash"></i>️</a>
+                                    </td>
+                                {% endif %}
                             </tr>
                         {% endfor %}
                 </tbody>

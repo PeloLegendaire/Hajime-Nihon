@@ -10,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[Route('/lexique', name: 'lexique')]
 class LexiqueController extends AbstractController
@@ -27,6 +28,7 @@ class LexiqueController extends AbstractController
 
     #[Route('/ajouter', name: '_ajouter')]
     #[Route('/modifier/{id}', name: '_modifier', requirements: ['id' => '\d+'])]
+    #[IsGranted('ROLE_ADMIN')]
     public function editer(
         Request $request,
         EntityManagerInterface $entityManager,
@@ -48,6 +50,7 @@ class LexiqueController extends AbstractController
     }
 
     #[Route('/supprimer/{id}', name: '_supprimer', requirements: ['id' => '\d+'])]
+    #[IsGranted('ROLE_ADMIN')]
     public function supprimer(Lexique $lexique, EntityManagerInterface $entityManager): Response
     {
         $entityManager->remove($lexique);

@@ -139,7 +139,11 @@ input, textarea, select {
     font-family: inherit;
 }
 
-input[type='text'], select {
+input:focus-visible {
+    outline: $colorLightRed auto 1px;
+}
+
+input[type='text'], input[type='password'], select {
     width: 10rem;
     height: 2rem;
 }
@@ -152,6 +156,12 @@ input[type='number'] {
     color: #0f6848;
     background-color: #d2f4e8;
     border-color: #bff0de;
+}
+
+.alert-danger {
+    color: #58151c;
+    background-color: #f8d7da;
+    border-color: #f1aeb5;
 }
 
 .alert {

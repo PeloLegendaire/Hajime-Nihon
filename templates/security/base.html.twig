@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('security') }}
+{% endblock %}
+
+{% block body %}
+    <div class="container-connexion">
+        <div class="block-main-connexion">
+            {% block form %}{% endblock %}
+        </div>
+    </div>
+    <div class="container-home-background">
+        <p style="color:#2B2D42;font-size:7rem;transform:rotateZ(-25deg);left:50px;top:50px;">漢</p>
+        <p style="color:#EF233C;font-size:6rem;transform:rotateZ(25deg);right:50px;top:50px;">字</p>
+        <p style="color:#EF233C;font-size:6rem;left:100px;top:500px;">ひ</p>
+        <p style="color:#2B2D42;font-size:7rem;left:600px;top:600px;">ら</p>
+        <p style="color:#EF233C;font-size:6rem;right:600px;top:600px;">が</p>
+        <p style="color:#2B2D42;font-size:7rem;right:100px;top:500px;">な</p>
+    </div>
+{% endblock %}

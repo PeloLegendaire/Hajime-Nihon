@@ -23,9 +23,15 @@
                 <a class="nav-link" href="{{ path('quiz_index') }}">Quiz</a>
             </li>
         </ul>
-        <a href="#">
-            <button class="button-connection">Se connecter</button>
+        {% if app.user != null %}
+        <a href="{{ path('app_deconnexion') }}">
+            <button class="button-connection">Se déconnecter</button>
         </a>
+        {% else %}
+            <a href="{{ path('app_connexion') }}">
+                <button class="button-connection">Se connecter</button>
+            </a>
+        {% endif %}
     </div>
 
 </nav>

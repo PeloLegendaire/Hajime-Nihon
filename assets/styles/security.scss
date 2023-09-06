@@ -1,0 +1,39 @@
+@import "variables";
+
+.container-connexion {
+    display: flex;
+    align-items: center;
+    padding: 1rem 2rem;
+    flex-direction: column;
+
+    .block-main-connexion {
+        padding: 5rem 42rem;
+        display: flex;
+        flex-direction: column;
+        gap: 8rem;
+        width: 100%;
+
+        .form-connexion {
+            border: 2px solid $colorLightRed;
+            gap: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+
+            input {
+                width: 15rem;
+            }
+
+            a {
+                color: $colorLightRed;
+            }
+
+            button[type='submit'] {
+                color: $colorWhite;
+                padding: .5rem 2rem;
+            }
+        }
+    }
+}

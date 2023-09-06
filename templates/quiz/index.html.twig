@@ -19,9 +19,11 @@
                     <th scope="col">Type</th>
                     <th scope="col">Nombre de questions</th>
                     <th scope="col">Actions</th>
-                    <th scope="col">
-                        <a href="{{ path('quiz_ajouter') }}"><i class="fa-solid fa-plus"></i></a>
-                    </th>
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <th scope="col">
+                            <a href="{{ path('quiz_ajouter') }}"><i class="fa-solid fa-plus"></i></a>
+                        </th>
+                    {% endif %}
                 </tr>
             </thead>
             <tbody>
@@ -31,8 +33,10 @@
                         <td>{{ quiz.type|capitalize }}</td>
                         <td>{{ quiz.nombreQuestion }}</td>
                         <td>
-                            <a href="{{ path('quiz_modifier', {'id': quiz.id}) }}"><i class="fa-solid fa-pen"></i>️</a>
-                            <a href="{{ path('quiz_supprimer', {'id': quiz.id}) }}" onclick="confirm('Êtes-vous sûr(e) ?');"><i class="fa-solid fa-trash"></i>️</a>
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <a href="{{ path('quiz_modifier', {'id': quiz.id}) }}"><i class="fa-solid fa-pen"></i>️</a>
+                                <a href="{{ path('quiz_supprimer', {'id': quiz.id}) }}" onclick="confirm('Êtes-vous sûr(e) ?');"><i class="fa-solid fa-trash"></i>️</a>
+                            {% endif %}
                             <a href="{{ path('quiz_commencer', {'id': quiz.id}) }}"><i class="fa-solid fa-play"></i></a>
                         </td>
                     </tr>
