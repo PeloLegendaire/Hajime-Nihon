@@ -24,9 +24,17 @@
             </li>
         </ul>
         {% if app.user != null %}
-        <a href="{{ path('app_deconnexion') }}">
-            <button class="button-connection">Se déconnecter</button>
-        </a>
+            <div class="dropdown">
+                <button class="dropdown-button">
+                    <i class="fa-regular fa-user" style="font-size: 1rem"></i>
+                    <span>{{ app.user.username }}</span>
+                    <i class="fa-solid fa-caret-down" style="font-size: 1rem"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="{{ path('app_profil') }}">Mon espace</a>
+                    <a href="{{ path('app_deconnexion') }}">Déconnexion</a>
+                </div>
+            </div>
         {% else %}
             <a href="{{ path('app_connexion') }}">
                 <button class="button-connection">Se connecter</button>

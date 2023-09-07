@@ -38,7 +38,7 @@ class SecurityController extends AbstractController
             $user->setPassword(
                 $userPasswordHasher->hashPassword(
                     $user,
-                    $form->get('plainPassword')->getData()
+                    $user->getPassword()
                 )
             );
 
@@ -48,7 +48,7 @@ class SecurityController extends AbstractController
             $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
                 (new TemplatedEmail())
                     ->from(new Address('mailer@your-domain.com', 'Hajime Nihon'))
-                    ->to($user->getUsername())
+                    ->to($user->getEmail())
                     ->subject('Please Confirm your Email')
                     ->htmlTemplate('security/confirmation_email.html.twig')
             );
@@ -78,6 +78,13 @@ class SecurityController extends AbstractController
 
         return $this->redirectToRoute('app_inscription');
     }
+
+    #[Route(path: '/profil', name: 'app_profil')]
+    public function profil(): Response
+    {
+        return $this->render('security/profil.html.twig');
+    }
+
     #[Route(path: '/connexion', name: 'app_connexion')]
     public function login(AuthenticationUtils $authenticationUtils): Response
     {

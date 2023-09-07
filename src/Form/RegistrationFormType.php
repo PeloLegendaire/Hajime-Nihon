@@ -19,26 +19,15 @@ class RegistrationFormType extends AbstractType
     {
         $builder
             ->add('username', null, ['attr' => ['placeholder' => 'Identifiant']])
-            ->add('plainPassword', RepeatedType::class, [
+            ->add('email', null, ['attr' => ['placeholder' => 'email']])
+            ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'invalid_message' => 'Les mots de passe ne correspondent pas',
                 'first_options' => ['label' => false, 'attr' => ['placeholder' => 'Mot de passe']],
                 'second_options' => ['label' => false, 'attr' => ['placeholder' => 'Confirmation']],
                 'required' => true,
                 'options' => ['attr' => ['class' => 'password-field']],
-
-                'mapped' => false,
                 'attr' => ['autocomplete' => 'new-password'],
-                'constraints' => [
-                    new NotBlank([
-                        'message' => 'Veuillez entrez votre mot de passe',
-                    ]),
-                    new Length([
-                        'min' => 6,
-                        'minMessage' => 'Votre mot de passe devrait faire au moins {{ limit }} caractères',
-                        'max' => 4096,
-                    ]),
-                ],
             ])
         ;
     }

@@ -14,6 +14,7 @@
         width: 100%;
 
         .form-connexion {
+            border-radius: 5px;
             border: 2px solid $colorLightRed;
             gap: 2rem;
             display: flex;
@@ -33,6 +34,19 @@
             button[type='submit'] {
                 color: $colorWhite;
                 padding: .5rem 2rem;
+            }
+
+            #registration_form_password {
+                div {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                }
+            }
+
+            ul {
+                padding: 0;
+                font-size: .8rem;
             }
         }
     }

@@ -132,6 +132,32 @@ h1 {
         display: flex;
         gap: 4rem;
     }
+
+    .dropdown {
+        &:hover .dropdown-content {
+            display: block;
+        }
+        .dropdown-button {
+            background-color: transparent;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: $colorGrey;
+            box-shadow: 0 5px 4px 0 rgba(0,0,0,0.2);
+            z-index: 1;
+            a {
+                font-size: 1rem;
+                display: block;
+                color: $colorWhite;
+                padding: .8rem;
+                &:hover {
+                    opacity: .5;
+                }
+            }
+        }
+    }
+
 }
 
 input, textarea, select {

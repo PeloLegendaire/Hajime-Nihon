@@ -10,10 +10,20 @@
             <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
         {% endfor %}
 
-        {{ form_errors(registrationForm) }}
+        <div class="alert alert-danger">
+            {{ form_errors(registrationForm.username) }}
+            {{ form_errors(registrationForm.email) }}
+            {{ form_errors(registrationForm.password.first) }}
+            {{ form_errors(registrationForm.password.second) }}
+        </div>
 
         {{ form_widget(registrationForm.username) }}
-        {{ form_widget(registrationForm.plainPassword) }}
+
+        {{ form_widget(registrationForm.email) }}
+
+        {{ form_widget(registrationForm.password.first) }}
+
+        {{ form_widget(registrationForm.password.second) }}
 
         <button type="submit" class="btn">S'inscrire</button>
     {{ form_end(registrationForm) }}
