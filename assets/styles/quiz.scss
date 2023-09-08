@@ -13,6 +13,29 @@
         align-items: center;
         flex-direction: column;
     }
+
+    .container-question {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+
+        #quiz-question {
+            font-size: 5rem;
+            border: 1px solid black;
+            padding: 0 2rem;
+            background-color: #EFFAFA
+        }
+
+        #quiz-answer {
+            width: 3rem;
+        }
+
+        #quiz-validate {
+            color: $colorWhite;
+            padding: .5rem 2rem;
+        }
+    }
 }
 
 .form-quiz {

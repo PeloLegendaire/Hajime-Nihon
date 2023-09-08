@@ -21,11 +21,26 @@ class QuizRepository extends ServiceEntityRepository
         parent::__construct($registry, Quiz::class);
     }
 
-    public function getAllIds(string $tableName) {
+    public function getAllIds(string $tableName, string $type = null) {
         $connection = $this->getEntityManager()->getConnection();
         $sql = 'SELECT id FROM ' . $tableName . ' t';
+        if ($type !== null) {
+            $sql .= ' WHERE type = ' . $type;
+        }
         $result = $connection->executeQuery($sql);
         return $result->fetchAllAssociative();
+    }
+
+    public function getQuestion(int $id, string $tableName, string $type = null) {
+        $connection = $this->getEntityManager()->getConnection();
+        $column = ($type === null ? 'signe' : 'kanji');
+        $sql = 'SELECT ' . $column . ', romaji FROM ' . $tableName . ' t';
+        if ($type === null) {
+            $sql .= ' INNER JOIN signe s ON t.id = s.id';
+        }
+        $sql .= ' WHERE t.id = ' . $id;
+        $result = $connection->executeQuery($sql);
+        return $result->fetchAssociative();
     }
 
 //    /**

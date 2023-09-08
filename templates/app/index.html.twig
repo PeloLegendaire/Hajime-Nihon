@@ -9,10 +9,10 @@
                 Bienvenue sur <span style="color: #EF233C;">Hajime Nihon</span> le site pour apprendre les syllabaires et kanji japonais.
             </p>
             <div class="button-home">
-                <a href="#">
+                <a href="{{ path('app_signe', {'signe': 'hiragana'}) }}">
                     <button>Je débute <img class="arrow" src="{{ asset('images/fleche-droite.svg') }}" alt=">"></button>
                 </a>
-                <a href="#">
+                <a href="{{ path('app_connexion') }}">
                     <button>Je contribue <img class="arrow" src="{{ asset('images/fleche-droite.svg') }}" alt=">"></button>
                 </a>
             </div>

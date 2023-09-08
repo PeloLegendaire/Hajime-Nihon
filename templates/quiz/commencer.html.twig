@@ -6,7 +6,46 @@
     <div class="container-quiz">
         <div class="header-quiz">
             <h1>Quiz : {{ quiz.libelle }}</h1>
-            <p>Question <span id="number-question">1</span>/{{ quiz.nombreQuestion }}</p>
+            <p>Question <span id="number-question"></span>/{{ quiz.nombreQuestion }}</p>
+        </div>
+        <div class="container-question">
+            <div id="quiz-question"></div>
+            <div>
+                <label>Rōmaji : </label>
+                <input id="quiz-answer" type="text" style="width: {{ quiz.type == 'mot' or quiz.type == 'expression' ? '10' : '3' }}rem">
+            </div>
+            <button id="quiz-validate">Valider</button>
+        </div>
+        <div class="container-result" style="display: none;">
+            <div class="block-result">Votre score est de : <span id="answer-valid"></span>/{{ quiz.nombreQuestion }}</div>
         </div>
     </div>
+    <script type="text/javascript">
+        let questions = JSON.parse("{{ questions|json_encode|escape('js') }}");
+        let currentQuestion = 1;
+        let result = 0;
+        initializeQuestion();
+
+        document.getElementById('quiz-validate').addEventListener('click', () => {
+            if (questions[currentQuestion] === undefined) {
+                 document.getElementsByClassName('container-question')[0].style.display = 'none';
+                 document.getElementById('answer-valid').textContent = result.toString();
+                 document.getElementsByClassName('container-result')[0].style.display = 'block';
+            } else {
+                 let responseUser = document.getElementById('quiz-answer').value;
+                 if (responseUser === questions[currentQuestion - 1].romaji) {
+                     result++;
+                 }
+                 currentQuestion++;
+                 initializeQuestion()
+            }
+        });
+
+        function initializeQuestion() {
+            let question = questions[currentQuestion - 1];
+            document.getElementById('number-question').textContent = currentQuestion.toString();
+            document.getElementById('quiz-answer').value = '';
+            document.getElementById('quiz-question').textContent = question.signe;
+        }
+    </script>
 {% endblock %}

@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Quiz;
 use App\Form\QuizType;
 use App\Repository\QuizRepository;
+use App\Service\QuizService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -58,10 +59,15 @@ class QuizController extends AbstractController
     }
 
     #[Route('/commencer/{id}', name: '_commencer', requirements: ['id' => '\d+'])]
-    public function commencer(Quiz $quiz, QuizRepository $quizRepository): Response
+    public function commencer(Quiz $quiz, QuizService $quizService): Response
     {
+        $questions = $quizService->getQuestions(
+            $quiz->getType(),
+            $quiz->getNombreQuestion()
+        );
         return $this->render('quiz/commencer.html.twig', [
-            'quiz' => $quiz
+            'quiz' => $quiz,
+            'questions' => $questions
         ]);
     }
 
