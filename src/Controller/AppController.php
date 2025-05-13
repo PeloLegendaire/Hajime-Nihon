@@ -2,13 +2,12 @@
 
 namespace App\Controller;
 
-use App\Entity\Signe;
 use App\Repository\HiraganaRepository;
 use App\Repository\KatakanaRepository;
 use App\Repository\SigneRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Attribute\Route;
 
 class AppController extends AbstractController
 {

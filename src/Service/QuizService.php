@@ -14,7 +14,8 @@ class QuizService
         $this->quizRepository = $quizRepository;
     }
 
-    public function getQuestions(string $type, int $numberQuestion) {
+    public function getQuestions(string $type, int $numberQuestion): array
+    {
         $questions = [];
         $tableName = 'lexique';
         if (!in_array($type, ['mot', 'expression'])) {
@@ -31,7 +32,8 @@ class QuizService
         return $questions;
     }
 
-    private function randomizeId(array $ids, int $numberQuestion) {
+    private function randomizeId(array $ids, int $numberQuestion): array
+    {
         $result = [];
         for ($i = 0; $i < $numberQuestion; $i++) {
             $rand = rand(0, count($ids) - 1);

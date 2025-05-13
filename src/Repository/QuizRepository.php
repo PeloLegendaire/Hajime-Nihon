@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Quiz;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\DBAL\Exception;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -21,7 +22,11 @@ class QuizRepository extends ServiceEntityRepository
         parent::__construct($registry, Quiz::class);
     }
 
-    public function getAllIds(string $tableName, string $type = null) {
+    /**
+     * @throws Exception
+     */
+    public function getAllIds(string $tableName, string $type = null): array
+    {
         $connection = $this->getEntityManager()->getConnection();
         $sql = 'SELECT id FROM ' . $tableName . ' t';
         if ($type !== null) {
@@ -31,7 +36,11 @@ class QuizRepository extends ServiceEntityRepository
         return $result->fetchAllAssociative();
     }
 
-    public function getQuestion(int $id, string $tableName, string $type = null) {
+    /**
+     * @throws Exception
+     */
+    public function getQuestion(int $id, string $tableName, string $type = null): array|false
+    {
         $connection = $this->getEntityManager()->getConnection();
         $column = ($type === null ? 'signe' : 'kanji');
         $sql = 'SELECT ' . $column . ', romaji FROM ' . $tableName . ' t';
