@@ -10,12 +10,21 @@
             <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
         {% endfor %}
 
-        <div class="alert alert-danger">
-            {{ form_errors(registrationForm.username) }}
-            {{ form_errors(registrationForm.email) }}
-            {{ form_errors(registrationForm.password.first) }}
-            {{ form_errors(registrationForm.password.second) }}
-        </div>
+        {% set hasErrors =
+            form_errors(registrationForm.username) is not empty or
+            form_errors(registrationForm.email) is not empty or
+            form_errors(registrationForm.password.first) is not empty or
+            form_errors(registrationForm.password.second) is not empty
+        %}
+
+        {% if hasErrors %}
+            <div class="alert alert-danger">
+                {{ form_errors(registrationForm.username) }}
+                {{ form_errors(registrationForm.email) }}
+                {{ form_errors(registrationForm.password.first) }}
+                {{ form_errors(registrationForm.password.second) }}
+            </div>
+        {% endif %}
 
         {{ form_widget(registrationForm.username) }}
 

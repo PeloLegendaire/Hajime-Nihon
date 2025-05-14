@@ -2,7 +2,6 @@
 
 namespace App\Entity;
 
-use App\Repository\HiraganaRepository;
 use App\Repository\SigneRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\DiscriminatorColumn;

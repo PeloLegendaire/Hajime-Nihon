@@ -106,6 +106,7 @@ h1 {
     display: flex;
     position: fixed;
     width: 100%;
+    z-index: 1;
 
     .button-connection {
         width: 10rem;

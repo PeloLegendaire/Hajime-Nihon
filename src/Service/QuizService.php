@@ -3,6 +3,7 @@
 namespace App\Service;
 
 use App\Repository\QuizRepository;
+use Doctrine\DBAL\Exception;
 
 class QuizService
 {
@@ -14,6 +15,9 @@ class QuizService
         $this->quizRepository = $quizRepository;
     }
 
+    /**
+     * @throws Exception
+     */
     public function getQuestions(string $type, int $numberQuestion): array
     {
         $questions = [];
@@ -34,15 +38,9 @@ class QuizService
 
     private function randomizeId(array $ids, int $numberQuestion): array
     {
-        $result = [];
-        for ($i = 0; $i < $numberQuestion; $i++) {
-            $rand = rand(0, count($ids) - 1);
-            while (in_array($ids[$rand]['id'], $result)) {
-                $rand = rand(0, count($ids) - 1);
-            }
-            $result[] = $ids[$rand]['id'];
-        }
-        return $result;
+        $idsPool = array_column($ids, 'id');
+        shuffle($idsPool);
+        return array_slice($idsPool, 0, min($numberQuestion, count($idsPool)));
     }
 
 }

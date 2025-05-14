@@ -27,15 +27,15 @@
         initializeQuestion();
 
         document.getElementById('quiz-validate').addEventListener('click', () => {
+            let responseUser = document.getElementById('quiz-answer').value;
+            if (responseUser === questions[currentQuestion - 1].romaji) {
+                result++;
+            }
             if (questions[currentQuestion] === undefined) {
                  document.getElementsByClassName('container-question')[0].style.display = 'none';
                  document.getElementById('answer-valid').textContent = result.toString();
                  document.getElementsByClassName('container-result')[0].style.display = 'block';
             } else {
-                 let responseUser = document.getElementById('quiz-answer').value;
-                 if (responseUser === questions[currentQuestion - 1].romaji) {
-                     result++;
-                 }
                  currentQuestion++;
                  initializeQuestion()
             }
