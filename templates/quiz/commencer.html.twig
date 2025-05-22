@@ -20,6 +20,8 @@
             <div class="block-result">Votre score est de : <span id="answer-valid"></span>/{{ quiz.nombreQuestion }}</div>
         </div>
     </div>
+    {# @TODO change quiz functionment: question with answer already displayed + when quiz is finished, show resume of good/bad answers #}
+    {# @TODO add list of kanji for user + add level of learning completion to a kanji/word/expression #}
     <script type="text/javascript">
         let questions = JSON.parse("{{ questions|json_encode|escape('js') }}");
         let currentQuestion = 1;
