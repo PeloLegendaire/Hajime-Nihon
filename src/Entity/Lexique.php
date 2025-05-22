@@ -25,9 +25,6 @@ class Lexique
     private ?string $kanji = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $romaji = null;
-
-    #[ORM\Column(length: 255)]
     private ?string $traduction = null;
 
     #[ORM\Column(length: 10)]
@@ -46,18 +43,6 @@ class Lexique
     public function setKanji(string $kanji): static
     {
         $this->kanji = $kanji;
-
-        return $this;
-    }
-
-    public function getRomaji(): ?string
-    {
-        return $this->romaji;
-    }
-
-    public function setRomaji(string $romaji): static
-    {
-        $this->romaji = $romaji;
 
         return $this;
     }

@@ -19,6 +19,7 @@
                 <h2>{{ type|capitalize }}</h2>
                 <table>
                     <tbody>
+                        {% set add = 0 %}
                         {% for key,signe in signes %}
                             {% if type starts with 'digramme' %}
                                 {% set i = 0 %}
@@ -40,10 +41,25 @@
                                     </tr>
                                 {% endif %}
                             {% else %}
+                                {% if signe.romaji in ['yu','yo'] %}
+                                    {% set add = 2 %}
+                                {% endif %}
+                                {% if signe.romaji in ['wo'] %}
+                                    {% set add = add + 3 %}
+                                {% endif %}
+                                {% set key = key + add %}
                                 {% set i = 0 %}
                                 {% if (key + 1) % 5 == 1 or key == 0 %}
                                     {% set i = key %}
                                     <tr>
+                                {% endif %}
+                                {% if signe.romaji in ['yu','yo'] %}
+                                    <td></td>
+                                {% endif %}
+                                {% if signe.romaji in ['wo'] %}
+                                    <td style="border: none"></td>
+                                    <td style="border: none"></td>
+                                    <td style="border: none"></td>
                                 {% endif %}
                                 <td style="background-color: {{ bgColor }}">
                                     <p>{{ signe.signe }}</p>

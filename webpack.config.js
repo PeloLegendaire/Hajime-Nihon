@@ -20,12 +20,12 @@ Encore
      * Each entry will result in one JavaScript file (e.g. app.js)
      * and one CSS file (e.g. app.scss) if your JavaScript imports CSS.
      */
-    .addEntry('app', './assets/app.js')
-    .addEntry('kanji', './assets/kanji.js')
-    .addEntry('signe', './assets/signe.js')
-    .addEntry('lexique', './assets/lexique.js')
-    .addEntry('quiz', './assets/quiz.js')
-    .addEntry('security', './assets/security.js')
+    .addEntry('app', './assets/app.ts')
+    .addEntry('kanji', './assets/kanji.ts')
+    .addEntry('signe', './assets/signe.ts')
+    .addEntry('lexique', './assets/lexique.ts')
+    .addEntry('quiz', './assets/quiz.ts')
+    .addEntry('security', './assets/security.ts')
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()
@@ -62,7 +62,7 @@ Encore
     .enableSassLoader()
 
     // uncomment if you use TypeScript
-    //.enableTypeScriptLoader()
+    .enableTypeScriptLoader()
 
     // uncomment if you use React
     //.enableReactPreset()

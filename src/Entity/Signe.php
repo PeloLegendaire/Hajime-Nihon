@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping\InheritanceType;
 #[ORM\Entity(repositoryClass: SigneRepository::class)]
 #[InheritanceType('JOINED')]
 #[DiscriminatorColumn(name: 'discr', type: 'string')]
-#[DiscriminatorMap(['signe' => Signe::class, 'kanji' => Kanji::class, 'hiragana' => Hiragana::class, 'katakana' => Katakana::class])]
+#[DiscriminatorMap(['signe' => Signe::class, 'hiragana' => Hiragana::class, 'katakana' => Katakana::class])]
 abstract class Signe
 {
 

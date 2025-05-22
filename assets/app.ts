@@ -8,3 +8,11 @@
 // any CSS you import will output into a single css file (app.scss in this case)
 import './styles/app.scss';
 require ('@fortawesome/fontawesome-free/css/all.min.css');
+
+console.log('Hello from TypeScript!');
+
+function greet(name: string): string {
+    return `Bonjour, ${name} !`;
+}
+
+console.log(greet('TypeScript'));

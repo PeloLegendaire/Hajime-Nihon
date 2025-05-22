@@ -37,72 +37,67 @@ class AppFixtures extends Fixture
         // kanji
         $kanji1 = new Kanji();
         $kanji1->setSigne('日');
-        $kanji1->setRomaji('hi');
-        $kanji1->setDescription('Kanji du soleil');
-        $kanji1->setTraduction('Soleil/Jour');
+        $kanji1->setDescription('Soleil/Jour');
+        $kanji1->setOnyomi(['二チ', 'ジツ']);
+        $kanji1->setKunyomi(['か', 'ひ']);
         $manager->persist($kanji1);
 
         $kanji2 = new Kanji();
         $kanji2->setSigne('月');
-        $kanji2->setRomaji('tsuki');
-        $kanji2->setDescription('Kanji de la lune');
-        $kanji2->setTraduction('Lune/Mois');
+        $kanji2->setDescription('Lune/Mois');
+        $kanji2->setOnyomi(['ゲツ', 'ガツ']);
+        $kanji2->setKunyomi(['つき']);
         $manager->persist($kanji2);
 
         $kanji3 = new Kanji();
         $kanji3->setSigne('水');
-        $kanji3->setRomaji('mizu');
-        $kanji3->setDescription('Kanji de l\'eau');
-        $kanji3->setTraduction('Eau');
+        $kanji3->setDescription('Eau');
+        $kanji3->setOnyomi(['スイ']);
+        $kanji3->setKunyomi(['みず']);
         $manager->persist($kanji3);
 
         $kanji4 = new Kanji();
         $kanji4->setSigne('木');
-        $kanji4->setRomaji('ki');
-        $kanji4->setDescription('Kanji de l\'arbre');
-        $kanji4->setTraduction('Arbre');
+        $kanji4->setDescription('Arbre');
+        $kanji4->setOnyomi(['ボク', 'モク']);
+        $kanji4->setKunyomi(['き', 'こ-']);
         $manager->persist($kanji4);
 
         $kanji5 = new Kanji();
         $kanji5->setSigne('土');
-        $kanji5->setRomaji('tsuchi');
-        $kanji5->setDescription('Kanji de la terre');
-        $kanji5->setTraduction('Terre/Sol');
+        $kanji5->setDescription('Terre/Sol');
+        $kanji5->setOnyomi(['ド', 'ト']);
+        $kanji5->setKunyomi(['つち']);
         $manager->persist($kanji5);
 
         // mot
         $mot1 = new Lexique();
         $mot1->setType('mot');
         $mot1->setKanji('はい');
-        $mot1->setRomaji('hai');
         $mot1->setTraduction('Oui');
         $manager->persist($mot1);
 
         $mot2 = new Lexique();
         $mot2->setType('mot');
         $mot2->setKanji('いいえ');
-        $mot2->setRomaji('iie');
         $mot2->setTraduction('Non');
         $manager->persist($mot2);
 
         $mot3 = new Lexique();
         $mot3->setType('mot');
         $mot3->setKanji('うれしい');
-        $mot3->setRomaji('ureshii');
         $mot3->setTraduction('Content');
         $manager->persist($mot3);
 
         $mot4 = new Lexique();
         $mot4->setType('mot');
         $mot4->setKanji('子供');
-        $mot4->setRomaji('kodomo');
         $mot4->setTraduction('Enfant');
         $manager->persist($mot4);
 
         $mot5 = new Lexique();
         $mot5->setType('mot');
         $mot5->setKanji('ここ');
-        $mot5->setRomaji('koko');
         $mot5->setTraduction('Ici');
         $manager->persist($mot5);
 
@@ -110,28 +105,24 @@ class AppFixtures extends Fixture
         $expression1 = new Lexique();
         $expression1->setType('expression');
         $expression1->setKanji('おはようございます');
-        $expression1->setRomaji('ohayou gozaimasu');
         $expression1->setTraduction('Bonjour');
         $manager->persist($expression1);
 
         $expression2 = new Lexique();
         $expression2->setType('expression');
         $expression2->setKanji('ありがとうございます');
-        $expression2->setRomaji('arigatou gozaimasu');
         $expression2->setTraduction('Merci');
         $manager->persist($expression2);
 
         $expression3 = new Lexique();
         $expression3->setType('expression');
         $expression3->setKanji('おねがいします');
-        $expression3->setRomaji('onegai shimasu');
         $expression3->setTraduction('S\'il vous plait');
         $manager->persist($expression3);
 
         $expression4 = new Lexique();
         $expression4->setType('expression');
         $expression4->setKanji('またね');
-        $expression4->setRomaji('mata ne');
         $expression4->setTraduction('À bientôt');
         $manager->persist($expression4);
 

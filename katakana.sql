@@ -31,7 +31,7 @@ INSERT INTO signe (id, signe, romaji, discr) VALUES
 (1134, 'ホ', 'ho', 'katakana'),
 (1135, 'マ', 'ma', 'katakana'),
 (1136, 'ミ', 'mi', 'katakana'),
-(1137, 'ミ', 'mu', 'katakana'),
+(1137, 'ム', 'mu', 'katakana'),
 (1138, 'メ', 'me', 'katakana'),
 (1139, 'モ', 'mo', 'katakana'),
 (1140, 'ヤ', 'ya', 'katakana'),
