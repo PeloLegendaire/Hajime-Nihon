@@ -36,6 +36,33 @@
             padding: .5rem 2rem;
         }
     }
+
+    .container-result {
+        #questions-result-list {
+            display: flex;
+            gap: 1rem;
+
+            .question-result {
+                font-size: 2rem;
+                border: 1px solid black;
+                padding: 0 1rem;
+
+                span {
+                    font-size: 1.5rem;
+                }
+            }
+
+            .true {
+                background-color: #a7ffa7;
+            }
+
+            .false {
+                background-color: #ffa7a7;
+            }
+        }
+
+
+    }
 }
 
 .form-quiz {

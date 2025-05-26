@@ -18,25 +18,28 @@
         </div>
         <div class="container-result" style="display: none;">
             <div class="block-result">Votre score est de : <span id="answer-valid"></span>/{{ quiz.nombreQuestion }}</div>
+            <div id="questions-result-list">
+
+            </div>
         </div>
     </div>
-    {# @TODO change quiz functionment: question with answer already displayed + when quiz is finished, show resume of good/bad answers #}
     {# @TODO add list of kanji for user + add level of learning completion to a kanji/word/expression #}
     <script type="text/javascript">
         let questions = JSON.parse("{{ questions|json_encode|escape('js') }}");
         let currentQuestion = 1;
         let result = 0;
+        let responseUser;
         initializeQuestion();
 
         document.getElementById('quiz-validate').addEventListener('click', () => {
-            let responseUser = document.getElementById('quiz-answer').value;
-            if (responseUser === questions[currentQuestion - 1].romaji) {
+            responseUser = document.getElementById('quiz-answer').value;
+            let isCorrect = responseUser === questions[currentQuestion - 1].romaji;
+            if (isCorrect) {
                 result++;
             }
+            addQuestionToSummary(isCorrect);
             if (questions[currentQuestion] === undefined) {
-                 document.getElementsByClassName('container-question')[0].style.display = 'none';
-                 document.getElementById('answer-valid').textContent = result.toString();
-                 document.getElementsByClassName('container-result')[0].style.display = 'block';
+                 displayEndQuiz();
             } else {
                  currentQuestion++;
                  initializeQuestion()
@@ -48,6 +51,21 @@
             document.getElementById('number-question').textContent = currentQuestion.toString();
             document.getElementById('quiz-answer').value = '';
             document.getElementById('quiz-question').textContent = question.signe;
+        }
+
+        function displayEndQuiz() {
+            document.getElementsByClassName('container-question')[0].style.display = 'none';
+            document.getElementById('answer-valid').textContent = result.toString();
+            document.getElementsByClassName('container-result')[0].style.display = 'block';
+        }
+
+        function addQuestionToSummary(isCorrect) {
+            let question = questions[currentQuestion - 1];
+            let htmlToAdd = `<div class="question-result ${isCorrect ? 'true' : 'false'}">
+                <h4>${question.signe}</h4>
+                <span>${(isCorrect ? '' : responseUser + ' ≠ ') + question.romaji}</span>
+            </div>`;
+            document.getElementById('questions-result-list').innerHTML += htmlToAdd;
         }
     </script>
 {% endblock %}
